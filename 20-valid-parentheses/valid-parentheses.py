@@ -1,14 +1,12 @@
 class Solution:
-    def isValid(self, s: str) -> bool:
+    def isValid(self,s:str) ->bool:
         stack = []
-        mapping = {')': '(', '}': '{', ']': '['}
-        
+        mapping = {')' : '(',']' : '[', '}':'{'}
+
         for char in s:
-            if char in mapping:  # 닫는 괄호
-                top_element = stack.pop() if stack else '#'
-                if mapping[char] != top_element:
-                    return False
-            else:  # 여는 괄호
+            if char in mapping:
+                new_ele = stack.pop() if stack else '#'
+                if mapping[char] != new_ele : return False
+            else:
                 stack.append(char)
-        
-        return not stack  # 스택이 비어 있으면 True
+        return not stack
